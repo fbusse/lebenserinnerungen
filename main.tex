@@ -7,7 +7,17 @@
 %\documentclass[a4paper]{scrbook}
 %\usepackage{a4wide}
 %\usepackage[a-2u]{pdfx}
-\usepackage{ebgaramond}
+
+\usepackage{fontspec}
+% Main Serif Font
+\setmainfont{EB Garamond}
+% Math Font (StylisticSet={8,9} enables cleaner tildes and math variants)
+\setmathfont{Garamond-Math.otf}[StylisticSet={8,9}]
+% Sans-Serif Font (Scaled to match EB Garamond's x-height)
+\setsansfont{Fira Sans}[Scale=MatchLowercase]
+% Monospace Font (Scaled to match EB Garamond's x-height)
+\setmonofont{Inconsolata}[Scale=MatchLowercase]
+
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
 \usepackage{graphicx}	% Bilder
