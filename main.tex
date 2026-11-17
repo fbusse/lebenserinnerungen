@@ -1,14 +1,15 @@
 \documentclass[a5paper,pagesize,10pt,twoside=true]{scrbook}
 %\documentclass[a4paper]{scrbook}
 %\usepackage{a4wide}
+\usepackage[a-2u]{pdfx}
+\usepackage{fontspec}
 \usepackage[utf8]{inputenc}
-\usepackage[OT2,T1]{fontenc}
-\newcommand\textcyr[1]{{\fontencoding{OT2}\fontfamily{wncyr}\selectfont #1}}	% mit \textcyr{blabla} können kyrillische Wörter eingefügt werden
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
 \usepackage{graphicx}	% Bilder
 \usepackage{eurosym}	% €-Symbol
 \usepackage{hyperref}	% Links
+\hypersetup{hidelinks}
 \usepackage{siunitx}	% SI-Einheiten
 \sisetup{locale = DE}
 \sisetup{quotient-mode=fraction}
@@ -16,7 +17,6 @@
 \usepackage{listings}	% Listings
 \usepackage{acronym}
 \usepackage{dialogue}	% Dialoge
-\usepackage{kpfonts}
 
 %\usepackage{layout}
 %\usepackage{showframe}
