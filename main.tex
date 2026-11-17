@@ -26,11 +26,6 @@
 \usepackage[babel,german=quotes]{csquotes}
 \usepackage{graphicx}	% Bilder
 \usepackage{hyperref}	% Links
-\hypersetup{
-  hidelinks,
-  pdftitle={Meine Lebenserinnerungen im Abriss},
-  pdfauthor={Fritz Busse}
-}
 \usepackage{siunitx}	% SI-Einheiten
 \sisetup{locale = DE}
 \sisetup{quotient-mode=fraction}
@@ -44,11 +39,19 @@
 %\usepackage[top=1.4cm,bottom=2.34cm,left=0.98cm,right=1.98cm,showframe]{geometry} <- DEFAULT
 \usepackage[top=1.8cm,bottom=2.34cm,left=1.45cm,right=1.45cm]{geometry}
 
-\renewcommand{\marginpar}[2][]{}
 % ... um die Anmerkungen, die mit \marginpar gemacht wurden, auszublenden
+\renewcommand{\marginpar}[2][]{}
+
+% damit die Fußnoten nicht pro Kapitel neu gezählt werden
 
 \counterwithout{footnote}{chapter}
-% damit die Fußnoten nicht pro Kapitel neu gezählt werden
+
+% muss direkt von begin kommen, sonst funktioniert das Inhaltsverzeichnis nicht korrekt.
+\hypersetup{
+  hidelinks,
+  pdftitle={Meine Lebenserinnerungen im Abriss},
+  pdfauthor={Fritz Busse}
+}
 
 \begin{document}
 
