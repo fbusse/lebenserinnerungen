@@ -1,6 +1,6 @@
 \DocumentMetadata{
   lang = de-DE,
-  pdfversion = 2.0,
+  pdfversion = 1.7,
   pdfstandard = a-2u,
 }
 \documentclass[a5paper,pagesize,10pt,twoside=true,headings=normal]{scrbook}
@@ -24,7 +24,6 @@
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
 \usepackage{graphicx}	% Bilder
-\usepackage{hyperref}	% Links
 \usepackage{siunitx}	% SI-Einheiten
 \sisetup{locale = DE}
 \sisetup{quotient-mode=fraction}
@@ -46,6 +45,7 @@
 \counterwithout{footnote}{chapter}
 
 % muss direkt von begin kommen, sonst funktioniert das Inhaltsverzeichnis nicht korrekt.
+\usepackage{hyperref}	% Links
 \hypersetup{
   colorlinks=true, 
   linkcolor=black,
