@@ -6,17 +6,18 @@
 \documentclass[a5paper,pagesize,10pt,twoside=true]{scrbook}
 %\documentclass[a4paper]{scrbook}
 %\usepackage{a4wide}
-%\usepackage[a-2u]{pdfx}
 
-\usepackage{fontspec}
-% Main Serif Font
-\setmainfont{EB Garamond}
-% Math Font (StylisticSet={8,9} enables cleaner tildes and math variants)
-\setmathfont{Garamond-Math.otf}[StylisticSet={8,9}]
-% Sans-Serif Font (Scaled to match EB Garamond's x-height)
-\setsansfont{Fira Sans}[Scale=MatchLowercase]
-% Monospace Font (Scaled to match EB Garamond's x-height)
-\setmonofont{Inconsolata}[Scale=MatchLowercase]
+\usepackage{unicode-math} % lädt fontspec automatisch
+% Hauptschrift
+\setmainfont{EB Garamond}[
+  Numbers = OldStyle,   % Mediävalziffern; weglassen für Versalziffern
+]
+% Serifenlose: humanistisch, harmoniert gut mit Garamond
+\setsansfont{Source Sans Pro}[Scale = MatchLowercase]
+% Monospace
+\setmonofont{Source Code Pro}[Scale = MatchLowercase]
+% Mathematik: auf EB Garamond basierende OpenType-Math-Schrift
+\setmathfont{Garamond-Math.otf}
 
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
