@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   build_examples_article:
-    name: Test | Example (Book)
+    name: Generate main.pdf | LuaLaTeX
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
