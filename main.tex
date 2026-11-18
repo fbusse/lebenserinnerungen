@@ -1,6 +1,6 @@
 \DocumentMetadata{
   lang = de-DE,
-  pdfstandard = a-2u,
+%  pdfstandard = a-2u,
 }
 \documentclass[a5paper,pagesize,11pt,twoside=true,headings=normal]{scrbook}
 %\documentclass[a4paper]{scrbook}
@@ -16,7 +16,7 @@
   Ligatures      = {TeX, Common},
 ]
 % Serifenlose: humanistisch, harmoniert gut mit Garamond
-\usepackage[scale=MatchLowercase]{sourcesanspro}
+\usepackage[scale=MatchLowercase]{sourcesans}
 % Monospace
 \usepackage[scale=MatchLowercase]{sourcecodepro}
 % Mathematik: auf EB Garamond basierende OpenType-Math-Schrift
@@ -26,10 +26,11 @@
 
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
+\DeclareQuoteAlias[quotes]{german}{german-germany}
 \usepackage{graphicx}	% Bilder
 \usepackage{siunitx}	% SI-Einheiten
 \sisetup{locale = DE}
-\sisetup{quotient-mode=fraction}
+\sisetup{per-mode = fraction}
 \usepackage{listings}	% Listings
 \usepackage{acronym}
 \usepackage{dialogue}	% Dialoge
