@@ -3,30 +3,29 @@
 %  pdfstandard = a-2u,
 %}
 
-\documentclass[a5paper,pagesize,11pt,twoside=true,headings=normal]{scrbook}
+%\documentclass[a5paper,pagesize,11pt,twoside=true,headings=normal]{scrbook}
+\documentclass[a5paper,11pt,headings=normal,BCOR=8mm,DIV=calc]{scrbook}
 %\documentclass[a4paper]{scrbook}
 %\usepackage{a4wide}
 
 \usepackage{microtype}
 \usepackage{unicode-math} % lädt fontspec automatisch
+
 % Hauptschrift
 \setmainfont{EB Garamond}[
   BoldFont       = {EB Garamond SemiBold},
   BoldItalicFont = {EB Garamond SemiBold Italic},
-  Numbers        = {OldStyle, Proportional}, % Mediävalziffern; weglassen für Versalziffern
-  Ligatures      = {TeX, Common},
+  Numbers        = {OldStyle, Proportional},
 ]
-% Serifenlose: humanistisch, harmoniert gut mit Garamond
-\usepackage[scale=MatchLowercase]{sourcesans}
-% Monospace
-\usepackage[scale=MatchLowercase]{sourcecodepro}
-% Mathematik: auf EB Garamond basierende OpenType-Math-Schrift
+\setsansfont{Source Sans 3}[Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
 \setmathfont{Garamond-Math.otf}
+
 % Garamond in KOMA nutzen
 \addtokomafont{disposition}{\rmfamily}
 
 \usepackage[ngerman]{babel}
-\usepackage[babel,german=quotes]{csquotes}
+\usepackage[autostyle=true,german=quotes]{csquotes}
 \DeclareQuoteAlias[quotes]{german}{german-germany}
 \usepackage{graphicx}	% Bilder
 \usepackage{siunitx}	% SI-Einheiten
@@ -39,7 +38,7 @@
 %\usepackage{layout}
 %\usepackage{showframe}
 %\usepackage[top=1.4cm,bottom=2.34cm,left=0.98cm,right=1.98cm,showframe]{geometry} <- DEFAULT
-\usepackage[top=1.8cm,bottom=2.34cm,left=1.45cm,right=1.45cm]{geometry}
+%\usepackage[top=1.8cm,bottom=2.34cm,left=1.45cm,right=1.45cm]{geometry}
 
 % ... um die Anmerkungen, die mit \marginpar gemacht wurden, auszublenden
 \renewcommand{\marginpar}[2][]{}
@@ -51,8 +50,7 @@
 % muss direkt von begin kommen, sonst funktioniert das Inhaltsverzeichnis nicht korrekt.
 \usepackage{hyperref}	% Links
 \hypersetup{
-  colorlinks=true, 
-  linkcolor=blue,
+  hidelinks, 
   pdfdisplaydoctitle= true,
   pdftitle={Meine Lebenserinnerungen im Abriss},
   pdfauthor={Fritz Busse}
