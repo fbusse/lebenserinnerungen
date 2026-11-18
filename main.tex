@@ -7,10 +7,14 @@
 %\documentclass[a4paper]{scrbook}
 %\usepackage{a4wide}
 
+\usepackage{microtype}
 \usepackage{unicode-math} % lädt fontspec automatisch
 % Hauptschrift
 \setmainfont{EB Garamond}[
-  Numbers = OldStyle,   % Mediävalziffern; weglassen für Versalziffern
+  BoldFont       = {EB Garamond SemiBold},
+  BoldItalicFont = {EB Garamond SemiBold Italic},
+  Numbers        = {OldStyle, Proportional}, % Mediävalziffern; weglassen für Versalziffern
+  Ligatures      = {TeX, Common},
 ]
 % Serifenlose: humanistisch, harmoniert gut mit Garamond
 \setsansfont{Source Sans Pro}[Scale = MatchLowercase]
