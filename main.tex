@@ -1,7 +1,7 @@
-%\DocumentMetadata{
-%  lang = de-DE,
-%  pdfstandard = a-2u,
-%}
+\DocumentMetadata{
+  lang = de-DE,
+  pdfstandard = a-2u,
+}
 \documentclass[a5paper,pagesize,11pt,twoside=true,headings=normal]{scrbook}
 %\documentclass[a4paper]{scrbook}
 %\usepackage{a4wide}
@@ -33,7 +33,24 @@
 \sisetup{per-mode = fraction}
 \usepackage{listings}	% Listings
 \usepackage{acronym}
-\usepackage{dialogue}	% Dialoge
+%\usepackage{dialogue}	% Dialoge
+
+
+% Ersatz für das Paket dialogue (gleiche Befehle: dialogue, \speak, \direct, \refer)
+\newcommand*\DialogueLabel[1]{\scshape\MakeLowercase{#1}:\hfil}
+\newcommand\DirectStyle{\small\slshape}
+\newcommand\direct[1]{[{\DirectStyle #1}]}
+\DeclareTextFontCommand\refer{\scshape}
+\newenvironment{dialogue}{%
+  \begin{list}{}{%
+    \setlength\itemsep{0pt plus .5ex}%
+    \setlength\parsep{\parskip}%
+    \setlength\rightmargin{\leftmargin}%
+    \newcommand\speak[1]{\item[{##1}]}%
+    \let\makelabel\DialogueLabel
+  }%
+}{\end{list}}
+
 
 %\usepackage{layout}
 %\usepackage{showframe}
