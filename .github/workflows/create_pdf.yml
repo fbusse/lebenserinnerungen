@@ -29,10 +29,19 @@ jobs:
           root_file: main.tex
           latexmk_use_lualatex: true
           texlive_version: latest
+          
+      - name: Relevante Log-Zeilen anzeigen
+        if: always()
+        run: |
+          head -n 5 main.log
+          grep -n -i -E "hyperref|pdfmanagement|DocumentMetadata|warning" main.log || true
 
       - name: Upload PDF
         uses: actions/upload-artifact@v7
         with:
           name: PDF
-          path: main.pdf
+          path: |
+            main.pdf
+            main.log
+            main.toc
           if-no-files-found: error
