@@ -28,7 +28,7 @@ jobs:
         with:
           root_file: main.tex
           latexmk_use_lualatex: true
-          texlive_version: 2025
+          texlive_version: latest
 
       - name: Upload PDF
         uses: actions/upload-artifact@v7
