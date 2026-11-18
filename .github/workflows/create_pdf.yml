@@ -27,6 +27,7 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: main.tex
+          pre_compile: "tlmgr update --self && tlmgr update koma-script"
           latexmk_use_lualatex: true
           texlive_version: latest
           
