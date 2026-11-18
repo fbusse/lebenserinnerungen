@@ -33,25 +33,7 @@
 \sisetup{per-mode = fraction}
 \usepackage{listings}	% Listings
 \usepackage{acronym}
-%\usepackage{dialogue}	% Dialoge
-
-
-% Ersatz für das Paket dialogue (gleiche Befehle: dialogue, \speak, \direct, \refer)
-\newcommand*\DialogueLabel[1]{\scshape\MakeLowercase{#1}:\hfil}
-\newcommand\DirectStyle{\small\slshape}
-\newcommand\direct[1]{[{\DirectStyle #1}]}
-\DeclareTextFontCommand\refer{\scshape}
-\newenvironment{dialogue}{%
-  \begin{list}{}{%
-    \setlength\itemsep{0pt plus .5ex}%
-    \setlength\parsep{\parskip}%
-    \setlength\rightmargin{\leftmargin}%
-    \newcommand\speak[1]{\item[{##1}]}%
-    \let\makelabel\DialogueLabel
-  }%
-}{\end{list}}
-
-
+\usepackage{dialogue}	% Dialoge
 %\usepackage{layout}
 %\usepackage{showframe}
 %\usepackage[top=1.4cm,bottom=2.34cm,left=0.98cm,right=1.98cm,showframe]{geometry} <- DEFAULT
