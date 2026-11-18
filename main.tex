@@ -6,7 +6,6 @@
 %\documentclass[a5paper,pagesize,11pt,twoside=true,headings=normal]{scrbook}
 \documentclass[a5paper,11pt,headings=normal,BCOR=8mm,DIV=calc]{scrbook}
 %\documentclass[a4paper]{scrbook}
-%\usepackage{a4wide}
 
 \usepackage{microtype}
 \usepackage{unicode-math} % lädt fontspec automatisch
@@ -26,20 +25,15 @@
 \addtokomafont{disposition}{\rmfamily}
 
 \usepackage[ngerman]{babel}
+\usepackage[ngerman]{selnolig}
 \usepackage[autostyle=true,german=quotes]{csquotes}
 \DeclareQuoteAlias[quotes]{german}{german-germany}
 \usepackage{graphicx}	% Bilder
 \usepackage{siunitx}	% SI-Einheiten
-\sisetup{locale = DE}
-\sisetup{per-mode = fraction}
+\sisetup{locale=DE, per-mode=fraction}
 \usepackage{listings}	% Listings
 \usepackage{acronym}
 \usepackage{dialogue}	% Dialoge
-
-%\usepackage{layout}
-%\usepackage{showframe}
-%\usepackage[top=1.4cm,bottom=2.34cm,left=0.98cm,right=1.98cm,showframe]{geometry} <- DEFAULT
-%\usepackage[top=1.8cm,bottom=2.34cm,left=1.45cm,right=1.45cm]{geometry}
 
 % ... um die Anmerkungen, die mit \marginpar gemacht wurden, auszublenden
 \renewcommand{\marginpar}[2][]{}
