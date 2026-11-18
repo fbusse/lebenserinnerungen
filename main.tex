@@ -1,10 +1,11 @@
-\DocumentMetadata{
-  lang = de-DE,
-  pdfstandard = a-2u,
-}
-% GEÄNDERT: book statt scrbook; a5paper kommt jetzt über geometry
-\documentclass[11pt,twoside]{book}
-\pagestyle{plain}
+%\DocumentMetadata{
+%  lang = de-DE,
+%  pdfstandard = a-2u,
+%}
+
+\documentclass[a5paper,pagesize,11pt,twoside=true,headings=normal]{scrbook}
+%\documentclass[a4paper]{scrbook}
+%\usepackage{a4wide}
 
 \usepackage{microtype}
 \usepackage{unicode-math} % lädt fontspec automatisch
@@ -12,21 +13,20 @@
 \setmainfont{EB Garamond}[
   BoldFont       = {EB Garamond SemiBold},
   BoldItalicFont = {EB Garamond SemiBold Italic},
-  Numbers        = {OldStyle, Proportional},
+  Numbers        = {OldStyle, Proportional}, % Mediävalziffern; weglassen für Versalziffern
   Ligatures      = {TeX, Common},
 ]
-% Serifenlose
+% Serifenlose: humanistisch, harmoniert gut mit Garamond
 \usepackage[scale=MatchLowercase]{sourcesans}
 % Monospace
 \usepackage[scale=MatchLowercase]{sourcecodepro}
-% Mathematik
+% Mathematik: auf EB Garamond basierende OpenType-Math-Schrift
 \setmathfont{Garamond-Math.otf}
-% ENTFERNT: \addtokomafont{disposition}{\rmfamily}
-% (book setzt Überschriften ohnehin in der Hauptschrift)
+% Garamond in KOMA nutzen
+\addtokomafont{disposition}{\rmfamily}
 
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
-% NEU: deutsche Anführungszeichen für die Sprache aus \DocumentMetadata
 \DeclareQuoteAlias[quotes]{german}{german-germany}
 \usepackage{graphicx}	% Bilder
 \usepackage{siunitx}	% SI-Einheiten
@@ -34,27 +34,19 @@
 \sisetup{per-mode = fraction}
 \usepackage{listings}	% Listings
 \usepackage{acronym}
-\usepackage{dialogue}
+\usepackage{dialogue}	% Dialoge
 
-% GEÄNDERT: a5paper hier statt in der Klasse
-\usepackage[a5paper,top=1.8cm,bottom=2.34cm,left=1.45cm,right=1.45cm]{geometry}
+%\usepackage{layout}
+%\usepackage{showframe}
+%\usepackage[top=1.4cm,bottom=2.34cm,left=0.98cm,right=1.98cm,showframe]{geometry} <- DEFAULT
+\usepackage[top=1.8cm,bottom=2.34cm,left=1.45cm,right=1.45cm]{geometry}
 
+% ... um die Anmerkungen, die mit \marginpar gemacht wurden, auszublenden
 \renewcommand{\marginpar}[2][]{}
 
-\counterwithout{footnote}{chapter}
+% damit die Fußnoten nicht pro Kapitel neu gezählt werden
 
-% NEU: Ersatz für die KOMA-Befehle \addchap und \addsec
-% (nicht nummeriert, aber im Inhaltsverzeichnis und im Kolumnentitel)
-\NewDocumentCommand\addchap{o m}{%
-  \chapter*{#2}%
-  \addcontentsline{toc}{chapter}{\IfValueTF{#1}{#1}{#2}}%
-  \markboth{\IfValueTF{#1}{#1}{#2}}{\IfValueTF{#1}{#1}{#2}}%
-}
-\NewDocumentCommand\addsec{o m}{%
-  \section*{#2}%
-  \addcontentsline{toc}{section}{\IfValueTF{#1}{#1}{#2}}%
-  \markright{\IfValueTF{#1}{#1}{#2}}%
-}
+\counterwithout{footnote}{chapter}
 
 % muss direkt von begin kommen, sonst funktioniert das Inhaltsverzeichnis nicht korrekt.
 \usepackage{hyperref}	% Links
@@ -181,6 +173,5 @@
 \end{table}
 
 \end{document}
-
 
 
