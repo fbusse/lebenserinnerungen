@@ -45,3 +45,60 @@ jobs:
             main.log
             main.toc
           if-no-files-found: error
+
+  diagnose:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [minimal, ohne-acronym, ohne-microtype, ohne-marginpar, klasse-book]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Variante erzeugen
+        run: |
+          case "${{ matrix.variant }}" in
+            minimal)
+              cat > main.tex <<'EOF'
+          \DocumentMetadata{lang=de-DE, pdfstandard=a-2u}
+          \documentclass{scrbook}
+          \usepackage[ngerman]{babel}
+          \usepackage{hyperref}
+          \hypersetup{colorlinks=true, linkcolor=blue}
+          \begin{document}
+          \tableofcontents
+          \chapter{Eins}
+          \chapter{Zwei}
+          \end{document}
+          EOF
+              ;;
+            ohne-acronym)   sed -i 's/^\\usepackage{acronym}/%&/' main.tex ;;
+            ohne-microtype) sed -i 's/^\\usepackage{microtype}/%&/' main.tex ;;
+            ohne-marginpar) sed -i 's/^\\renewcommand{\\marginpar}/%&/' main.tex ;;
+            klasse-book)    sed -i 's/{scrbook}/{book}/' main.tex ;;
+          esac
+
+      - name: Compile tex
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          latexmk_use_lualatex: true
+          texlive_version: latest
+          args: "-f -file-line-error -interaction=nonstopmode"
+
+      - name: PDF prüfen
+        if: always()
+        run: |
+          python3 - <<'EOF'
+          import re, zlib
+          data = open("main.pdf", "rb").read()
+          text = data
+          for m in re.finditer(rb"stream\r?\n(.*?)\r?\nendstream", data, re.S):
+              try:
+                  text += zlib.decompress(m.group(1))
+              except Exception:
+                  pass
+          print("Link-Annotationen:", len(re.findall(rb"/Subtype\s*/Link", text)))
+          print("Blaue Farbwechsel: ", len(re.findall(rb"0(?:\.0)? 0(?:\.0)? 1(?:\.0)? rg", text)))
+          EOF
